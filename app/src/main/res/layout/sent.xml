@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:background="@drawable/background_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true">
+        <TextView
+            android:id="@+id/text_sent"
+            android:textColor="@color/stream_ui_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="this is sent message"
+            android:padding="10dp"
+            android:textSize="20sp"></TextView>
+    </RelativeLayout>
+</RelativeLayout>

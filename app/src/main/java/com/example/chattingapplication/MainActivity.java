@@ -42,13 +42,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();
-                for (DataSnapshot post:snapshot.getChildren())
+                for (DataSnapshot snap : snapshot.getChildren())
                 {
-                    User user = post.getValue(User.class);
-                    if (user.uid!=mAuth.getCurrentUser().getUid()) users.add(user);
+                    User user = snap.getValue(User.class);
+                    if (!user.uid.equals(mAuth.getUid())) users.add(user);
                 }
                 adapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

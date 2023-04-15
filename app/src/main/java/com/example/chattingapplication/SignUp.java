@@ -95,7 +95,7 @@ public class SignUp extends AppCompatActivity {
                             storageReference.child("display_picture").child(mAuth.getCurrentUser().getUid()).putStream(stream);
                             download_url = "https://firebasestorage.googleapis.com/v0/b/justchat-253f8.appspot.com/o/display_picture%2F"+mAuth.getCurrentUser().getUid()+"?alt=media";
                             dbref = FirebaseDatabase.getInstance().getReference();
-                            dbref.child("user").child(mAuth.getCurrentUser().getUid()).setValue(new User(NAME,EMAIL,PASS,download_url));
+                            dbref.child("user").child(mAuth.getCurrentUser().getUid()).setValue(new User(NAME,EMAIL,mAuth.getCurrentUser().getUid(),download_url));
                             Intent intent = new Intent(SignUp.this,MainActivity.class);
                             finish();
                             startActivity(intent);

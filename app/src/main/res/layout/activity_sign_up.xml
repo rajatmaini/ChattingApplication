@@ -49,44 +49,47 @@
             android:hint="Name"
             android:paddingLeft="10dp"></EditText>
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/PhoneNumber"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/background"
             android:fontFamily="@font/aclonica"
-            android:hint="Email"
+            android:hint="Phone Number"
             android:layout_marginTop="30dp"
             android:layout_below="@id/Name"
             android:paddingLeft="10dp"></EditText>
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:background="@drawable/background_button"
+                android:text="Send Otp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/send_otp"
+                android:fontFamily="@font/aclonica"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/PhoneNumber"
+                android:layout_marginTop="25dp">
+
+        </androidx.appcompat.widget.AppCompatButton>
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/OTP"
             android:layout_width="300dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/background"
-            android:hint="Password"
+            android:hint="OTP"
             android:fontFamily="@font/aclonica"
             android:layout_marginTop="30dp"
             android:paddingLeft="10dp"
             android:layout_height="50dp"
-            android:layout_below="@id/email"></EditText>
-        <EditText
-            android:id="@+id/confirm_password"
-            android:layout_width="300dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/background"
-            android:hint="Confrim Password"
-            android:fontFamily="@font/aclonica"
-            android:layout_marginTop="30dp"
-            android:paddingLeft="10dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/password"></EditText>
+            android:layout_below="@id/send_otp"></EditText>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/SignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SignUp"
-            android:layout_below="@id/confirm_password"
+            android:layout_below="@id/OTP"
             android:fontFamily="@font/aclonica"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"

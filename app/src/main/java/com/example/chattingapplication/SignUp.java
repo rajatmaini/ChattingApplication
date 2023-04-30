@@ -25,10 +25,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
-import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.auth.*;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -146,5 +143,31 @@ public class SignUp extends AppCompatActivity {
             result = "Not found";
         }
         return result;
+    }
+    private void SignUpFunction(PhoneAuthCredential phoneAuthCredential)
+    {
+        mAuth.signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                if (task.isSuccessful())
+                {
+                    String NAME = name.getText().toString();
+                    String phnno = "+91"+getPhn.getText().toString();
+                    InputStream stream = null;
+                    try {
+                        stream = new FileInputStream(ImagePath);
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    storageReference.child("display_picture").child(mAuth.getCurrentUser().getUid()).putStream(stream);
+                    download_url = "https://firebasestorage.googleapis.com/v0/b/justchat-253f8.appspot.com/o/display_picture%2F"+mAuth.getCurrentUser().getUid()+"?alt=media";
+                    dbref = FirebaseDatabase.getInstance().getReference();
+                    dbref.child("user").child(mAuth.getCurrentUser().getUid()).setValue(new User(NAME,phnno,mAuth.getCurrentUser().getUid(),download_url));
+                    Intent intent = new Intent(SignUp.this,MainActivity.class);
+                    finish();
+                    startActivity(intent);
+                }
+            }
+        });
     }
 }
